@@ -1,0 +1,77 @@
+#include <iostream>
+#include <stdio.h>
+#include <windows.h>
+#include <conio.h>
+#include <math.h>
+#include <algorithm>
+#include <stdlib.h>
+#include <cstring>
+#include <iomanip>
+#include <cfloat>
+#include <ctime>
+#include <clocale>
+
+using namespace std;
+
+const int n = 3;
+int i;
+int a = 0;
+
+struct workers
+{
+    char second_name[100];
+    char post[150];
+    char education[150];
+    struct { int day; int month; int year; } DateOfBirth;
+    int salary_in_dollars;
+} w[n];
+
+int main()
+{
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Enter information about " << (i + 1) << " worker : " << endl;
+
+        cout << "Enter second name: " << endl;
+        cin >> (w[i].second_name);
+
+        cout << "Enter post: " << endl;
+        cin >> (w[i].post);
+
+        cout << "Enter education: " << endl;
+        cin >> (w[i].education);
+
+        cout << "Enter date of birth: day, month, year " << endl;
+        cin >> w[i].DateOfBirth.day>>w[i].DateOfBirth.month>>w[i].DateOfBirth.year;
+
+        cout << "Enter salary: " << endl;
+        cin >> (w[i].salary_in_dollars);
+
+    }
+    
+    cout << "\n\t\t\t Workers" << endl;
+ 
+    {
+        cout.precision(3);
+        for (int i = 0; i < n; i++)
+        {
+            cout << i + 1 << " " << w[i].second_name
+                << " post: " << w[i].post
+                << ", education: " << w[i].education 
+                << ", date of birth: " << w[i].DateOfBirth.day << " " << w[i].DateOfBirth.month << " " << w[i].DateOfBirth.year
+                << ", salary: " << w[i].salary_in_dollars << endl;
+        }
+    } 
+
+    for (int i = 0; i < n; i++)
+        if ((2023 - w[i].DateOfBirth.year) < 30) 
+        {
+            a++;
+        }
+        
+    cout << "Number of workers under 30: " << a << endl;
+
+    system("pause");
+    return 0;
+}
